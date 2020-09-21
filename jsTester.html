@@ -1,0 +1,59 @@
+<html>
+<head>
+<script language = "JavaScript">
+
+var number = 0;
+var myList = [ "first", "second", "third", "fourth" ];
+function tester()
+{
+/*
+	//var answer = confirm("ayy u tryna quit?");
+	var answer = prompt("name??!?!?");
+	alert("Welcome to my page, " + answer + "!");
+*/
+	
+	if(number == 0)
+	{
+		alert(myList[0]);
+		number = number + 1
+	}
+	if(number == 1)
+	{
+		alert(myList[1]);
+		number = number + 1
+	}
+	if(number == 2)
+	{
+		alert(myList[2]);
+		number = number + 1
+	}
+	if(number == 3)
+	{
+		alert(myList[3]);
+		number = 0
+	}
+}
+
+
+</script>
+
+</head>
+<body>
+<center> 
+<h1> JavaScript Tester </h1>
+
+<br/>
+<br/>
+
+<input type="button" value="Click Me" onClick="tester()">
+
+<br/>
+<br/>
+
+<form action="index.html">
+<input type="submit" value="Return to home"/>
+</form>
+
+</center>
+</body>
+</html>
