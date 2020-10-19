@@ -1,0 +1,54 @@
+<html>
+<head>
+<script language = "JavaScript">
+
+var number = 0;
+var picList = [ "images/ss1.jpg", "images/ss2.jpg", "images/ss3.jpg", "images/ss4.jpg", "images/ss5.jpg" ];
+var soundList = [ "sounds/gorilla.mp3", "sounds/orangutan.mp3", "sounds/baboon.mp3", "sounds/gibbon.mp3", "sounds/chimp.mp3" ];
+
+function startShow()
+
+{
+	document.getElementById("picFrame").src = picList[number];
+	document.getElementById("myAudio").src = soundList[number];
+	myAudio.play();
+	
+	number = number + 1;
+	
+	if(number == 6)
+	{
+		document.getElementById("picFrame").src = picList[0];
+		document.getElementById("myAudio").src = soundList[0];
+		myAudio.play();
+		
+		number = 1
+	}
+}
+
+
+</script>
+
+</head>
+<body>
+<center> 
+<h1> Monkey Slideshow </h1>
+
+<img id = "picFrame" src = "images/ss0.jpg" height = "600"/>
+
+<audio id = "myAudio"> </audio>
+
+<br/>
+<br/>
+
+<input type="button" value = "Play" onClick = "startShow()">
+
+<br/>
+<br/>
+
+<form action="index.html">
+<input type="submit" value="Return to home"/>
+</form>
+
+</center>
+</body>
+</html>
