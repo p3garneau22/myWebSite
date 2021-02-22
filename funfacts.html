@@ -1,0 +1,79 @@
+<html> 
+<head> 
+<script language="JavaScript">
+
+
+
+var group = ["Pick a monkey", "Spider monkey", "Howler monkey", "Capuchin monkey", "Squirrel monkey", "Pygmy Marmoset", "Mandrill monkey", "Patas monkey", "Owl monkey"];
+
+var facts = ["*nothing selected*", "The spider monkey is the most acrobatic of the New World monkeys, and it has been know to leap across gaps as large as 35 feet.",
+"The male howler monkey has the loudest call of any other primate and is one of the loudest animals in the world.",
+"The capuchin monkey is the most common and the most intelligent of the New World monkeys.",
+"To identify themselves more easily, squirrel monkeys will smear food on their tails, much like how humans may wear name tags.",
+"As the smallest monkey in the world, its body is as small as 5 inches and tail is about 7. Also, it can fit in the palm of a human hand.",
+"Mandrill monkeys have fangs that are longer than a lion's fangs. They also have multi-colored bottoms which makes them easier to see in the leafy gloom of the forest.",
+"The fastest primate on Earth is the patas monkey. It can reach speeds of 34 miles per hour (55 km/h).",
+"This is the only nocturnal monkey. They are also one of the few monkey species affected by malaria, and they have been used in non-human primate malaria experiments."];
+
+
+function loadData()
+{
+	var sum = 0;
+	for(var i = 0; i<group.length; i++)
+    {
+        var daList = document.getElementById("prez");
+  		var option = document.createElement("option");
+  		option.text = group[i];
+  		daList.add(option);
+    }
+}
+
+
+
+function start()
+{
+var selection = document.getElementById("prez");
+ var daIndex = getIndex(selection.value);
+ var funFactBox = document.getElementById("funFact");
+ 
+
+ 
+ if (daIndex <= -1)
+ { alert("An unknown error has occurred. Please try again."); }
+ else 
+ { funFactBox.value = facts[daIndex]; } 
+}
+
+
+function getIndex(d)
+{
+	var answer = -1; // invalid index value
+	for (var i = 0; i < group.length; i++)
+	{ 
+		if (group[i] == d)
+		{ answer = i; }
+	} 
+	return answer;
+}
+
+</script>
+</head>
+<body onload="loadData()"> 
+<center>
+<h1>Monkey Fun Facts</h1>
+<a href="index.html"> Click here to return to my home page. </a>
+
+<br/><br/>
+<table border = 3>
+	<tr>
+		<td>  	<select name="p1" id="prez"></select>	</td>
+		<td>	<input id="funFact" type="text" size="140"/> </td>
+	</tr>
+</table>
+<br/><br/>
+<input type="button" value="click" onclick="start()"/>
+</center>
+
+
+</body>
+</html>
