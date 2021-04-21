@@ -1,0 +1,101 @@
+<html>
+<head>
+<script language = "JavaScript">
+
+var tipSelect = ["-- How was the service? --", "10% - poor service", "15% - adequate service", "20% - good service", "25% - excellent service"];
+var tipPercent = [0, 10, 15, 20, 25];
+function calculateTip()
+{
+	var price = document.getElementById("priceQ").value;
+	var percent = document.getElementById("percentQ").value;
+	var people = document.getElementById("peopleQ").value;
+	
+	if (price == "")
+	{ alert("Enter the bill amount");
+    return; }
+	
+	if (percent == 0)
+	{ alert("Enter the tip percentage");
+    return; }
+	
+	if (people == "")
+	{ alert("Enter the number of people splitting the bill");
+    return; }
+	
+	if (people <= 1)
+	{ alert("Enter a valid number of people");
+    return; }
+	
+	var total = (price * percent) / people;
+	total = Math.round(total * 100) / 100;
+	//add 2 digits after decimal
+	total = total.toFixed(2);
+	document.getElementById("tipTotal").value = total;
+}
+
+function reset()
+{
+	document.getElementById("priceQ").value = "$00.00";
+	document.getElementById("peopleQ").value = "";
+	document.getElementById("tipTotal").value = "";
+
+}
+
+function loadData()
+{
+	document.getElementById("priceQ").value = "$00.00";
+	document.getElementById("peopleQ").value = "";
+	document.getElementById("tipTotal").value = "";
+
+	var sum = 0;
+	for(var i = 0; i<tipSelect.length; i++)
+    {
+        var service = document.getElementById("percentQ");
+  		var option = document.createElement("option");
+  		option.text = tipSelect[i];
+  		service.add(option);
+    }
+}
+
+</script>
+
+</head>
+<body onload="loadData()"> 
+
+<h1> Tip Calculator </h1>
+<table border = 3>
+	<tr>
+		<td>Price</td>
+		<td>
+			<input id = "priceQ" type = "text" size = "20"/>
+		</td>
+	</tr>
+	<tr>
+		<td>Tip %</td>
+		<td>
+			<select name="choosePercent" id="percentQ"></select>
+		</td>
+	</tr>
+	<tr>
+		<td>How Many People?</td>
+		<td>
+			<input id = "peopleQ" type = "text" size = "20"/>
+		</td>
+	</tr>
+	<tr>
+		<td>Cost (per person)</td>
+		<td>
+			<input id = "tipTotal" type = "text" size = "20"/>
+		</td>
+	</tr>
+</table>
+
+</br>
+
+<input type="button" value="Calculate Tip" onclick="calculateTip()"/>
+</br>
+<input type="button" value="reset" onclick="reset()"/>
+
+
+</body>
+</html>

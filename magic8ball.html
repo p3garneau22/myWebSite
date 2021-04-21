@@ -1,0 +1,71 @@
+<html>
+<head>
+<script languague = "JavaScript">
+
+var answers = ["yes", "no", "depends", "ion know cuh", "fr??!?", "flip a coin",
+"try again", "never", "ofc", "couldn't tell ya", "maybe"];
+
+function random()
+{
+	var rand = -1;
+	var userQ = document.getElementById("question")
+	var myAnswer = document.getElementById("answer")
+
+	rand = Math.random();
+	rand = rand * answers.length;
+	rand = Math.floor(rand);
+	
+//	alert(answers[rand])
+//	myAnswer.value = answers[rand]
+	
+	if(userQ.value.length == 0)
+	{
+		myAnswer.value = "Say sumn first";
+	}
+	else
+	{
+		myAnswer.value = answers[rand]
+	}
+}
+
+function reset()
+{
+	document.getElementById("answer").value = "";
+}
+</script>
+</head>
+<body background="images/8ballBK.gif">
+<font color="white";>
+
+<center>
+<h1>Magic 8ball</h1>
+
+<img src="images/crystalball.png" width="400">
+
+</br></br>
+
+<input id = "question" type = "text" size = "80" onfocusin = "reset()" />
+
+</br></br>
+
+<input type="button" value="Click here" onClick="random()"/>
+
+</br></br>
+
+<input id = "answer" type = "text" size = "80" readonly = true />
+
+<audio id="player" src="sounds/yay.mp3"> </audio>
+
+</br></br>
+</br></br>
+</br></br>
+
+<form action="index.html">
+<input type="submit" value="Return to home"/>
+</form>
+
+</center>
+</body>
+</html>
+
+

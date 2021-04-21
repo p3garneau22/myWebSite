@@ -1,0 +1,36 @@
+<html>
+<head>
+<script language="JavaScript">
+
+// make an array of 8 favorite foods
+var favFoods = ["pizza", "sushi", "burgers", "burritos",];
+var counter = 0;
+
+function start()
+{
+	alert("hello");
+	var tbox = documnet.getElementById("display");
+	
+	tbox.value = favFoods[counter];
+	
+	counter++;
+	
+	var timer = setTimeout("start()", 1000);
+	
+	if counter < 4;
+	{
+		var timer = setTimeout("start()", 1000);
+	}
+}
+
+</script>
+</head>
+<body>
+<center>
+<h1>Loop Test</h1>
+<input type="button" value="Click me" onClick="start()"/>
+<br/><br/>
+<input id="display" type="text" size="75"/>
+
+<body>
+</html>
