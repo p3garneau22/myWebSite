@@ -1,0 +1,124 @@
+<html>
+<head>
+<script language = "JavaScript">
+
+var tipSelect = ["-- How was the service? --", "10% - poor service", "15% - adequate service", "20% - good service", "25% - excellent service"];
+var tipPercent = [0, .10, .15, .20, .25];
+
+//create dropdown menu
+function loadData()
+{
+	for(var i = 0; i<tipSelect.length; i++)
+    {
+		var service = document.getElementById("percentQ");
+		var option = document.createElement("option");
+		option.text = tipSelect[i];
+		service.add(option);
+	}
+}
+
+//get and return index of tipSelect
+function tipValue(x)
+{
+	var answer = -1;
+	for (var i = 0; i<tipSelect.length; i++)
+	{ 
+		if (tipSelect[i] == x)
+		{ answer = i; }
+	} 
+	return answer;
+}
+
+function calculateTip()
+{
+//get the tip percentage from user's selection
+	var percent = document.getElementById("percentQ");
+	var tipCalc = tipPercent[tipValue(percent.value)];
+
+//establish other user inputs
+	var price = document.getElementById("priceQ").value;
+	var people = document.getElementById("peopleQ").value;
+
+//verify price
+	if (price == "")
+	{ alert("Enter the price of the bill");
+    return; }
+	if (price <= 0)
+	{ alert("Enter a valid price");
+    return; }
+	if (isNaN(price))
+	{ alert("Enter a valid price");
+    return; }
+//verify tip
+	if (tipCalc == 0)
+	{ alert("Select the tip percentage");
+    return; }
+//verify people
+	if (people == "")
+	{ alert("Enter the number of people splitting the bill");
+    return; }
+	if (people < 1)
+	{ alert("Enter a valid number of people");
+    return; }
+	if (isNaN(people))
+	{ alert("Enter a valid number of people");
+    return; }
+
+//caclulate tip
+	var total = (price * tipCalc) + +price;
+	total = total / people
+	total = Math.round(total * 100) / 100;
+	total = ("$" + total.toFixed(2));
+	document.getElementById("tipTotal").value = total;
+}
+
+function reset()
+{
+	document.getElementById("priceQ").value = "";
+	document.getElementById("peopleQ").value = "";
+	document.getElementById("tipTotal").value = "";
+}
+
+</script>
+
+</head>
+<body onload="loadData()"> 
+<font size="4px">
+
+<h1> Restaurant Bill Calculator </h1>
+<table border = 3>
+	<tr>
+		<td>Price</td>
+		<td>
+			$<input id = "priceQ" type = "text" size = "19" placeholder="00.00"/>
+		</td>
+	</tr>
+	<tr>
+		<td>Tip (percent)</td>
+		<td>
+			<select name="choosePercent" id="percentQ"> </select>
+		</td>
+	</tr>
+	<tr>
+		<td>Split the bill</td>
+		<td>
+			<input id = "peopleQ" type = "text" size = "20" placeholder="--How many are paying?--"/>
+		</td>
+	</tr>
+	<tr>
+		<td>Cost per person</td>
+		<td>
+			<input id = "tipTotal" type = "text" size = "20" readonly = true/>
+		</td>
+	</tr>
+</table>
+
+</br>
+
+<input type="button" value="Calculate Final Price" onclick="calculateTip()"/>
+</br>
+<input type="button" value="Reset" onclick="reset()"/>
+
+
+</body>
+</html>
